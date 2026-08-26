@@ -29,9 +29,10 @@ Do that only because you trust the source. Code signing is on the roadmap.
 
 Windows and Linux users want the [GitHub release](https://github.com/mf4633/stormsewer/releases/latest)
 instead — a Windows installer (`winget install MichaelFlynn.StormSewer` once the
-manifest merges), a Linux AppImage, and a tarball. There is also a browser build
-at [mf4633.github.io/stormsewer](https://mf4633.github.io/stormsewer/) that needs
-no install at all.
+manifest merges), a Linux AppImage, and a tarball. The engine also runs
+[in the browser](https://mf4633.github.io/stormsewer/) as WebAssembly — quick
+calculators and whole-network analysis from an `.ssn` file, no install — though
+the drawing and profile views are desktop-only.
 
 ## stormsewer-cli — the command-line analyzer
 
