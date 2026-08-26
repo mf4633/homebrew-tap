@@ -49,19 +49,15 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
-      # setup-homebrew must run first: it takes over the workspace, which
-      # wipes an earlier checkout out from under the copy below.
+      - uses: actions/checkout@v4
+
+      # For a repo named homebrew-*, setup-homebrew symlinks the workspace
+      # straight into Library/Taps, so the tap is already installed here and
+      # copying it would land it inside itself.
       - uses: Homebrew/actions/setup-homebrew@master
 
-      - uses: actions/checkout@v4
-        with:
-          path: checkout
-
-      - name: Install the tap from this checkout
-        run: |
-          TAP="$(brew --repository)/Library/Taps/mf4633/homebrew-tap"
-          mkdir -p "$(dirname "$TAP")"
-          cp -R "${{ github.workspace }}/checkout" "$TAP"
+      - name: Confirm the tap resolves to this checkout
+        run: brew tap-info mf4633/tap
 
       - name: Audit the formula
         run: brew audit --tap mf4633/tap --strict stormsewer-cli
