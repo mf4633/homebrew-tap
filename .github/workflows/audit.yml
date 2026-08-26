@@ -24,7 +24,7 @@ jobs:
         run: |
           TAP="$(brew --repository)/Library/Taps/mf4633/homebrew-tap"
           mkdir -p "$(dirname "$TAP")"
-          cp -R checkout "$TAP"
+          cp -R "${{ github.workspace }}/checkout" "$TAP"
 
       - name: Audit
         run: brew audit --tap mf4633/tap --strict
@@ -59,7 +59,7 @@ jobs:
         run: |
           TAP="$(brew --repository)/Library/Taps/mf4633/homebrew-tap"
           mkdir -p "$(dirname "$TAP")"
-          cp -R checkout "$TAP"
+          cp -R "${{ github.workspace }}/checkout" "$TAP"
 
       - name: Audit the formula
         run: brew audit --tap mf4633/tap --strict stormsewer-cli

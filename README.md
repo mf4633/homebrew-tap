@@ -63,7 +63,8 @@ WebAssembly.
 
 ## Updating a package
 
-Bump `version` and the `sha256` values after a release:
+After a release, bump the tag in the cask's `version` and in both formula
+URLs, then refresh the `sha256` values:
 
 ```sh
 gh release download vX.Y.Z -R mf4633/stormsewer \

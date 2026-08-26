@@ -1,17 +1,18 @@
 class StormsewerCli < Formula
   desc "Storm sewer network hydrology and hydraulics from the command line"
   homepage "https://github.com/mf4633/stormsewer"
-  version "0.9.2"
   license "GPL-3.0-or-later"
 
+  # No `version` stanza: Homebrew scans it from the URL, and `brew audit
+  # --strict` rejects the redundancy. Bump the tag in both URLs to update.
   on_macos do
-    url "https://github.com/mf4633/stormsewer/releases/download/v#{version}/stormsewer-cli-macos.tar.gz"
+    url "https://github.com/mf4633/stormsewer/releases/download/v0.9.2/stormsewer-cli-macos.tar.gz"
     sha256 "6c5db793af827a26bae72ad3c85c3314b60e1f114e3ea8f589cbdb591ef66e55"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mf4633/stormsewer/releases/download/v#{version}/stormsewer-cli-linux-x64.tar.gz"
+      url "https://github.com/mf4633/stormsewer/releases/download/v0.9.2/stormsewer-cli-linux-x64.tar.gz"
       sha256 "982dfc0ce32d36441f5bddc18f89078cb5ee597684c1b9fe26eec038665d0a7e"
     end
   end
