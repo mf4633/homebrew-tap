@@ -1,0 +1,70 @@
+# Verifies the tap on real runners: audits both packages, then actually
+# installs them. Packaging that is never installed is packaging that is
+# broken — the maintainer develops on Windows, where Homebrew cannot run.
+name: Audit and install
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly, so a release that moves an asset URL surfaces here rather than
+    # in somebody's terminal.
+    - cron: "0 14 * * 1"
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: checkout
+
+      - name: Install the tap from this checkout
+        run: |
+          TAP="$(brew --repository)/Library/Taps/mf4633/homebrew-tap"
+          mkdir -p "$(dirname "$TAP")"
+          cp -R checkout "$TAP"
+
+      - name: Audit
+        run: brew audit --tap mf4633/tap --strict
+
+      - name: Install the cask
+        run: |
+          brew install --cask mf4633/tap/stormsewer
+          test -x "/Applications/StormSewer.app/Contents/MacOS/StormSewer"
+          # The bundle version must match the cask version, or `brew upgrade`
+          # will never notice a new release.
+          PLIST="/Applications/StormSewer.app/Contents/Info.plist"
+          BUNDLE_VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PLIST")"
+          CASK_VERSION="$(brew info --json=v2 --cask mf4633/tap/stormsewer | python3 -c 'import json,sys; print(json.load(sys.stdin)["casks"][0]["version"])')"
+          echo "bundle=$BUNDLE_VERSION cask=$CASK_VERSION"
+          test "$BUNDLE_VERSION" = "$CASK_VERSION"
+
+      - name: Install and test the CLI
+        run: |
+          brew install mf4633/tap/stormsewer-cli
+          brew test mf4633/tap/stormsewer-cli
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: checkout
+
+      - uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Install the tap from this checkout
+        run: |
+          TAP="$(brew --repository)/Library/Taps/mf4633/homebrew-tap"
+          mkdir -p "$(dirname "$TAP")"
+          cp -R checkout "$TAP"
+
+      - name: Audit the formula
+        run: brew audit --tap mf4633/tap --strict stormsewer-cli
+
+      - name: Install and test the CLI
+        run: |
+          brew install mf4633/tap/stormsewer-cli
+          brew test mf4633/tap/stormsewer-cli
