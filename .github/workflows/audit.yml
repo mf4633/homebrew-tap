@@ -49,11 +49,13 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
+      # setup-homebrew must run first: it takes over the workspace, which
+      # wipes an earlier checkout out from under the copy below.
+      - uses: Homebrew/actions/setup-homebrew@master
+
       - uses: actions/checkout@v4
         with:
           path: checkout
-
-      - uses: Homebrew/actions/setup-homebrew@master
 
       - name: Install the tap from this checkout
         run: |
