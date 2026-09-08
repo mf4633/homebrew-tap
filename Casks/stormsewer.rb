@@ -1,6 +1,6 @@
 cask "stormsewer" do
-  version "0.9.3"
-  sha256 "733b40cc0a7135685bbf4bab6907f11d928683ad5a7fdcc8e25f49a032459d6a"
+  version "0.9.4"
+  sha256 "697ab274f2756e485a6f2194a1fc946a7049fbf7679e8218e9d06998d165369f"
 
   url "https://github.com/mf4633/stormsewer/releases/download/v#{version}/StormSewer-macos-universal.zip"
   name "StormSewer"
