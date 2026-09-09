@@ -6,14 +6,14 @@ class StormsewerCli < Formula
   # No `version` stanza: Homebrew scans it from the URL, and `brew audit
   # --strict` rejects the redundancy. Bump the tag in both URLs to update.
   on_macos do
-    url "https://github.com/mf4633/stormsewer/releases/download/v0.9.5/stormsewer-cli-macos.tar.gz"
-    sha256 "dc8cd442905f732ff28bc561cc83c223defea8273261a702387bee6302b111db"
+    url "https://github.com/mf4633/stormsewer/releases/download/v0.9.6/stormsewer-cli-macos.tar.gz"
+    sha256 "1fdc9761de2342f6fd72671f78bacfd4d4b3d987f4ce2f24a09ffef87d09943e"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mf4633/stormsewer/releases/download/v0.9.5/stormsewer-cli-linux-x64.tar.gz"
-      sha256 "20fe1df8b965f0393d524147c9a8d332d4a717221432f64deb7a68298ecb3b0a"
+      url "https://github.com/mf4633/stormsewer/releases/download/v0.9.6/stormsewer-cli-linux-x64.tar.gz"
+      sha256 "64dcc1dfe06ace011e0b0352f37dc318d68240601d711350de18b01a2975eeea"
     end
   end
 
