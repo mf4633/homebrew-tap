@@ -54,7 +54,7 @@ jobs:
       # For a repo named homebrew-*, setup-homebrew symlinks the workspace
       # straight into Library/Taps, so the tap is already installed here and
       # copying it would land it inside itself.
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: Homebrew/actions/setup-homebrew@main
 
       - name: Confirm the tap resolves to this checkout
         run: brew tap-info mf4633/tap
