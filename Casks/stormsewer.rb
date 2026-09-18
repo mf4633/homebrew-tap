@@ -1,10 +1,10 @@
 cask "stormsewer" do
-  version "0.9.8"
-  sha256 "838754e400db607ed126594a50efb8ee335ccabc2d530002706541ac1e02c640"
+  version "0.10.0"
+  sha256 "721c00816e618c43b2dbea0d62b6851747ab079ae8ae4c771d4ee7082bc49ca0"
 
   url "https://github.com/mf4633/stormsewer/releases/download/v#{version}/StormSewer-macos-universal.zip"
   name "StormSewer"
-  desc "Storm sewer design and analysis for gravity pipe networks"
+  desc "Storm sewer design and EPA SWMM model editor with 2D overland flow"
   homepage "https://github.com/mf4633/stormsewer"
 
   livecheck do
