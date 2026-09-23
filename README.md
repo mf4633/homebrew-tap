@@ -6,15 +6,18 @@ Homebrew packages for engineering tools by [Michael Flynn, PE](https://github.co
 brew tap mf4633/tap
 ```
 
-## StormSewer — the desktop app
+## AquaSWMM — the desktop app
 
-Free, open-source storm sewer design and analysis for gravity pipe networks:
+AquaSWMM (called StormSewer before 0.11.0) is free, open-source storm sewer
+design and an EPA SWMM model editor. Design for gravity pipe networks:
 Rational method hydrology, Manning capacity for circular, box, elliptical and
 arch conduits, standard-step HGL/EGL backwater, HEC-22 inlets with bypass
-carryover, auto-sizing, and submittal PDF reports.
+carryover, auto-sizing, and submittal PDF reports; for SWMM models, a map
+editor with every project dialog, runs on the EPA engine, results, profiles,
+and 2D overland flow with 1D-2D coupling.
 
 ```sh
-brew install --cask mf4633/tap/stormsewer
+brew install --cask mf4633/tap/aquaswmm
 ```
 
 macOS only, universal (Apple Silicon and Intel). The app is **not signed or
@@ -22,26 +25,26 @@ notarized**, so macOS quarantines it on first launch and calls it damaged or
 unidentified. Either right-click it in Applications and choose Open once, or:
 
 ```sh
-xattr -dr com.apple.quarantine /Applications/StormSewer.app
+xattr -dr com.apple.quarantine /Applications/AquaSWMM.app
 ```
 
 Do that only because you trust the source. Code signing is on the roadmap.
 
 Windows and Linux users want the [GitHub release](https://github.com/mf4633/stormsewer/releases/latest)
-instead — a Windows installer (`winget install MichaelFlynn.StormSewer` once the
+instead — a Windows installer (`winget install MichaelFlynn.AquaSWMM` once the
 manifest merges), a Linux AppImage, and a tarball. The engine also runs
 [in the browser](https://mf4633.github.io/stormsewer/) as WebAssembly — quick
 calculators and whole-network analysis from an `.ssn` file, no install — though
 the drawing and profile views are desktop-only.
 
-## stormsewer-cli — the command-line analyzer
+## aquaswmm-cli — the command-line analyzer
 
 Analyzes a `.ssn` network file and prints pipe and structure schedules. macOS
 (universal) and Linux x86-64.
 
 ```sh
-brew install mf4633/tap/stormsewer-cli
-stormsewer-cli network.ssn
+brew install mf4633/tap/aquaswmm-cli
+aquaswmm-cli network.ssn
 ```
 
 A minimal network file:
@@ -59,8 +62,16 @@ NODE OUT  outfall   300  0   101.0   107.0
 PIPE P1   N1   OUT  300     1.25  0.013
 ```
 
-The engine is also a Rust crate — `cargo add stormsewer` — and compiles to
+The engine is also a Rust crate (`aquaswmm`, in the
+[source repository](https://github.com/mf4633/stormsewer)) and compiles to
 WebAssembly.
+
+## Upgrading from StormSewer
+
+`brew upgrade` moves an existing `stormsewer` cask or `stormsewer-cli` formula
+to the new names by itself (`cask_renames.json`, `formula_renames.json`). The
+app's settings are copied from `~/Library/Application Support/StormSewer` on
+first launch; the old folder is left in place.
 
 ## Updating a package
 
@@ -69,18 +80,18 @@ URLs, then refresh the `sha256` values:
 
 ```sh
 gh release download vX.Y.Z -R mf4633/stormsewer \
-  -p "StormSewer-macos-universal.zip" \
-  -p "stormsewer-cli-macos.tar.gz" \
-  -p "stormsewer-cli-linux-x64.tar.gz"
-shasum -a 256 StormSewer-macos-universal.zip stormsewer-cli-*.tar.gz
-brew audit --tap mf4633/tap --strict stormsewer stormsewer-cli
+  -p "AquaSWMM-macos-universal.zip" \
+  -p "aquaswmm-cli-macos.tar.gz" \
+  -p "aquaswmm-cli-linux-x64.tar.gz"
+shasum -a 256 AquaSWMM-macos-universal.zip aquaswmm-cli-*.tar.gz
+brew audit --tap mf4633/tap --strict aquaswmm aquaswmm-cli
 ```
 
 ## Why a personal tap
 
 Homebrew's own cask repository requires a project to clear a notability bar
 (roughly 75 stars, 30 forks, or 30 watchers) before it will accept a new
-submission. StormSewer is newer than that. A personal tap works identically for
+submission. AquaSWMM is newer than that. A personal tap works identically for
 anyone who taps it, and the packages can move upstream later.
 
 ## License

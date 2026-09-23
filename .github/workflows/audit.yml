@@ -31,20 +31,20 @@ jobs:
 
       - name: Install the cask
         run: |
-          brew install --cask mf4633/tap/stormsewer
-          test -x "/Applications/StormSewer.app/Contents/MacOS/StormSewer"
+          brew install --cask mf4633/tap/aquaswmm
+          test -x "/Applications/AquaSWMM.app/Contents/MacOS/AquaSWMM"
           # The bundle version must match the cask version, or `brew upgrade`
           # will never notice a new release.
-          PLIST="/Applications/StormSewer.app/Contents/Info.plist"
+          PLIST="/Applications/AquaSWMM.app/Contents/Info.plist"
           BUNDLE_VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PLIST")"
-          CASK_VERSION="$(brew info --json=v2 --cask mf4633/tap/stormsewer | python3 -c 'import json,sys; print(json.load(sys.stdin)["casks"][0]["version"])')"
+          CASK_VERSION="$(brew info --json=v2 --cask mf4633/tap/aquaswmm | python3 -c 'import json,sys; print(json.load(sys.stdin)["casks"][0]["version"])')"
           echo "bundle=$BUNDLE_VERSION cask=$CASK_VERSION"
           test "$BUNDLE_VERSION" = "$CASK_VERSION"
 
       - name: Install and test the CLI
         run: |
-          brew install mf4633/tap/stormsewer-cli
-          brew test mf4633/tap/stormsewer-cli
+          brew install mf4633/tap/aquaswmm-cli
+          brew test mf4633/tap/aquaswmm-cli
 
   linux:
     runs-on: ubuntu-latest
@@ -60,9 +60,9 @@ jobs:
         run: brew tap-info mf4633/tap
 
       - name: Audit the formula
-        run: brew audit --tap mf4633/tap --strict stormsewer-cli
+        run: brew audit --tap mf4633/tap --strict aquaswmm-cli
 
       - name: Install and test the CLI
         run: |
-          brew install mf4633/tap/stormsewer-cli
-          brew test mf4633/tap/stormsewer-cli
+          brew install mf4633/tap/aquaswmm-cli
+          brew test mf4633/tap/aquaswmm-cli

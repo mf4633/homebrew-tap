@@ -1,4 +1,4 @@
-class StormsewerCli < Formula
+class AquaswmmCli < Formula
   desc "Storm sewer network hydrology and hydraulics from the command line"
   homepage "https://github.com/mf4633/stormsewer"
   license "GPL-3.0-or-later"
@@ -6,14 +6,14 @@ class StormsewerCli < Formula
   # No `version` stanza: Homebrew scans it from the URL, and `brew audit
   # --strict` rejects the redundancy. Bump the tag in both URLs to update.
   on_macos do
-    url "https://github.com/mf4633/stormsewer/releases/download/v0.10.0/stormsewer-cli-macos.tar.gz"
-    sha256 "280c18b98d4f43f8eef205129e96b13c55dc1a2ddc8ca40d5fec94b1a9506422"
+    url "https://github.com/mf4633/stormsewer/releases/download/v0.11.0/aquaswmm-cli-macos.tar.gz"
+    sha256 "7fff56c4e37329ea59d8915de8a084a5105659558d52dfd1d615eb0d5e23431e"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mf4633/stormsewer/releases/download/v0.10.0/stormsewer-cli-linux-x64.tar.gz"
-      sha256 "46d0d3e0b94cc1faf25ecb28fcf4cd9623b847a42681b2618feb890e4ed63f89"
+      url "https://github.com/mf4633/stormsewer/releases/download/v0.11.0/aquaswmm-cli-linux-x64.tar.gz"
+      sha256 "85d05eabdea5770711a960b493fa0913a16b8abd44697f8f274487da46106d5f"
     end
   end
 
@@ -23,7 +23,7 @@ class StormsewerCli < Formula
   end
 
   def install
-    bin.install "stormsewer-cli"
+    bin.install "aquaswmm-cli"
   end
 
   test do
@@ -34,7 +34,7 @@ class StormsewerCli < Formula
       NODE OUT outfall 100 100 95.0 103.0
       PIPE P1 N1 OUT 100.0 1.5 0.013
     EOS
-    output = shell_output("#{bin}/stormsewer-cli #{testpath}/net.ssn")
+    output = shell_output("#{bin}/aquaswmm-cli #{testpath}/net.ssn")
     assert_match "P1", output
   end
 end
