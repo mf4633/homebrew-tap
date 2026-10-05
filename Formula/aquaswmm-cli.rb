@@ -1,24 +1,24 @@
 class AquaswmmCli < Formula
   desc "Storm sewer network hydrology and hydraulics from the command line"
-  homepage "https://github.com/mf4633/stormsewer"
+  homepage "https://aquaswmm.com/"
   license "GPL-3.0-or-later"
 
   # No `version` stanza: Homebrew scans it from the URL, and `brew audit
   # --strict` rejects the redundancy. Bump the tag in both URLs to update.
   on_macos do
-    url "https://github.com/mf4633/stormsewer/releases/download/v0.11.0/aquaswmm-cli-macos.tar.gz"
-    sha256 "7fff56c4e37329ea59d8915de8a084a5105659558d52dfd1d615eb0d5e23431e"
+    url "https://github.com/mf4633/aquaswmm-releases/releases/download/v0.12.3/aquaswmm-cli-macos.tar.gz"
+    sha256 "e152891f7f80b9c7220c58517d4f2ee7ecf75196ae5b736f4f26102a9bc62fc8"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mf4633/stormsewer/releases/download/v0.11.0/aquaswmm-cli-linux-x64.tar.gz"
-      sha256 "85d05eabdea5770711a960b493fa0913a16b8abd44697f8f274487da46106d5f"
+      url "https://github.com/mf4633/aquaswmm-releases/releases/download/v0.12.3/aquaswmm-cli-linux-x64.tar.gz"
+      sha256 "7d19de3e9c07a1b5cfbe671bf11cfad1f24543ac5da93c59c6b51c6abc7999ac"
     end
   end
 
   livecheck do
-    url "https://github.com/mf4633/stormsewer/releases/latest"
+    url "https://github.com/mf4633/aquaswmm-releases/releases/latest"
     strategy :github_latest
   end
 
