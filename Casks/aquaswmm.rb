@@ -2,8 +2,7 @@ cask "aquaswmm" do
   version "0.12.3"
   sha256 "3ea11b4fc36264f253272065224bb3a14a797aea33b11248c6dca39c82d3e8bb"
 
-  url "https://github.com/mf4633/aquaswmm-releases/releases/download/v#{version}/AquaSWMM-macos-universal.zip",
-      verified: "github.com/mf4633/aquaswmm-releases/"
+  url "https://github.com/mf4633/aquaswmm-releases/releases/download/v#{version}/AquaSWMM-macos-universal.zip"
   name "AquaSWMM"
   desc "EPA SWMM model editor with 2D overland flow and storm-sewer design"
   homepage "https://aquaswmm.com/"
