@@ -6,14 +6,14 @@ class AquaswmmCli < Formula
   # No `version` stanza: Homebrew scans it from the URL, and `brew audit
   # --strict` rejects the redundancy. Bump the tag in both URLs to update.
   on_macos do
-    url "https://github.com/mf4633/aquaswmm-releases/releases/download/v0.12.3/aquaswmm-cli-macos.tar.gz"
-    sha256 "e152891f7f80b9c7220c58517d4f2ee7ecf75196ae5b736f4f26102a9bc62fc8"
+    url "https://github.com/mf4633/aquaswmm-releases/releases/download/v0.12.4/aquaswmm-cli-macos.tar.gz"
+    sha256 "3d83599eff848c584a9fc4b97771ed6c3064f4ad2d56bef4803197def44117d0"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mf4633/aquaswmm-releases/releases/download/v0.12.3/aquaswmm-cli-linux-x64.tar.gz"
-      sha256 "7d19de3e9c07a1b5cfbe671bf11cfad1f24543ac5da93c59c6b51c6abc7999ac"
+      url "https://github.com/mf4633/aquaswmm-releases/releases/download/v0.12.4/aquaswmm-cli-linux-x64.tar.gz"
+      sha256 "7705f67cad03bc0862687040814f781fbdde30d12c97ec929596691af11ed75f"
     end
   end
 

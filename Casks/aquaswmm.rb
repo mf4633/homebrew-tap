@@ -1,6 +1,6 @@
 cask "aquaswmm" do
-  version "0.12.3"
-  sha256 "3ea11b4fc36264f253272065224bb3a14a797aea33b11248c6dca39c82d3e8bb"
+  version "0.12.4"
+  sha256 "93219ee4d8e4b628c283ab7c0694d3b4a3674d52ce39d8927f916c2433e7bf10"
 
   url "https://github.com/mf4633/aquaswmm-releases/releases/download/v#{version}/AquaSWMM-macos-universal.zip"
   name "AquaSWMM"
