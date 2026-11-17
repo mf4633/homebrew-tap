@@ -25,6 +25,9 @@ jobs:
           TAP="$(brew --repository)/Library/Taps/mf4633/homebrew-tap"
           mkdir -p "$(dirname "$TAP")"
           cp -R "${{ github.workspace }}/checkout" "$TAP"
+          # Homebrew refuses to load formulae from a third-party tap until it
+          # is trusted (setup-homebrew does the same on the Linux job).
+          brew trust mf4633/tap
 
       - name: Audit
         run: brew audit --tap mf4633/tap --strict
